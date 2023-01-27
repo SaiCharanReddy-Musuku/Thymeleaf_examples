@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>if-unless demo</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Operation</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.role}"></td>
+    <td>
+      <a class="btn btn-primary" th:if="${user.role} == 'Admin'">Update</a>
+      <a class="btn btn-danger" th:if="${user.role} == 'Admin'">Delete</a>
+      <a class="btn btn-primary" th:unless="${user.role} == 'Admin'">View</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
